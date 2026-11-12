@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Internet Download Manager - Download</title>
+    <meta name="description" content="Internet Download Manager offers the fastest downloading process for audio/video files from the internet.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+@charset "UTF-8";.breadcrumb{display:flex;flex-wrap:wrap;padding:var(--bs-breadcrumb-padding-y) var(--bs-breadcrumb-padding-x);margin-bottom:var(--bs-breadcrumb-margin-bottom);background-color:var(--bs-breadcrumb-bg);border-radius:var(--bs-breadcrumb-border-radius)}.breadcrumb-item+.breadcrumb-item::before{display:inline-block;padding-right:var(--bs-breadcrumb-item-padding-x);color:var(--bs-breadcrumb-divider-color);content:var(--bs-breadcrumb-divider, "/");float:left;padding-right:var(--bs-breadcrumb-item-padding-x);color:var(--bs-breadcrumb-divider-color);content:var(--bs-breadcrumb-divider, "/")}@font-face{font-family:Dosis;font-style:normal;font-weight:400;font-display:swap;src:url("https://fonts.gstatic.com/s/dosis/v32/HhyaU5sn9vOmLzloC_U.woff2") format("woff2");unicode-range:U+102-103,U+110-111,U+128-129,U+168-169,U+1A0-1A1,U+1AF-1B0,U+300-301,U+303-304,U+308-309,U+323,U+329,U+1EA0-1EF9,U+20AB}@media (max-width:575.98px){.full_page_container{padding:0 1rem}}.navbar-brand img{height:40px;width:180px}.new-download-btn{display:flex;align-items:center;justify-content:space-between}:root{--bs-secondary-color:#6c757d;--bs-breadcrumb-padding-x:0;--bs-breadcrumb-padding-y:0;--bs-breadcrumb-margin-bottom:1rem;--bs-breadcrumb-divider-color:var(--bs-secondary-color);--bs-breadcrumb-item-padding-x:0.5rem;--bs-breadcrumb-item-active-color:var(--bs-secondary-color);--bs-blue:#0d6efd;--bs-indigo:#6610f2;--bs-purple:#6f42c1;--bs-pink:#d63384;--bs-red:#dc3545;--bs-orange:#fd7e14;--bs-yellow:#ffc107;--bs-green:#198754;--bs-teal:#20c997;--bs-cyan:#0dcaf0;--bs-black:#000;--bs-white:#fff;--bs-gray:#6c757d;--bs-gray-dark:#343a40;--bs-gray-100:#f8f9fa;--bs-gray-200:#e9ecef;--bs-gray-300:#dee2e6;--bs-gray-400:#ced4da;--bs-gray-500:#adb5bd;--bs-gray-600:#6c757d;--bs-gray-700:#495057;--bs-gray-800:#343a40;--bs-gray-900:#212529;--bs-primary:#0d6efd;--bs-secondary:#6c757d;--bs-success:#198754;--bs-info:#0dcaf0;--bs-warning:#ffc107;--bs-danger:#dc3545;--bs-light:#f8f9fa;--bs-dark:#212529;--bs-primary-rgb:13,110,253;--bs-secondary-rgb:108,117,125;--bs-success-rgb:25,135,84;--bs-info-rgb:13,202,240;--bs-warning-rgb:255,193,7;--bs-danger-rgb:220,53,69;--bs-light-rgb:248,249,250;--bs-dark-rgb:33,37,41;--bs-primary-text-emphasis:#052c65;--bs-secondary-text-emphasis:#2b2f32;--bs-success-text-emphasis:#0a3622;--bs-info-text-emphasis:#055160;--bs-warning-text-emphasis:#664d03;--bs-danger-text-emphasis:#58151c;--bs-light-text-emphasis:#495057;--bs-dark-text-emphasis:#495057;--bs-primary-bg-subtle:#cfe2ff;--bs-secondary-bg-subtle:#e2e3e5;--bs-success-bg-subtle:#d1e7dd;--bs-info-bg-subtle:#cff4fc;--bs-warning-bg-subtle:#fff3cd;--bs-danger-bg-subtle:#f8d7da;--bs-light-bg-subtle:#fcfcfd;--bs-dark-bg-subtle:#ced4da;--bs-primary-border-subtle:#9ec5fe;--bs-secondary-border-subtle:#c4c8cb;--bs-success-border-subtle:#a3cfbb;--bs-info-border-subtle:#9eeaf9;--bs-warning-border-subtle:#ffe69c;--bs-danger-border-subtle:#f1aeb5;--bs-light-border-subtle:#e9ecef;--bs-dark-border-subtle:#adb5bd;--bs-white-rgb:255,255,255;--bs-black-rgb:0,0,0;--bs-font-sans-serif:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";--bs-font-monospace:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;--bs-gradient:linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));--bs-body-font-family:var(--bs-font-sans-serif);--bs-body-font-size:1rem;--bs-body-font-weight:400;--bs-body-line-height:1.5;--bs-body-color:#212529;--bs-body-color-rgb:33,37,41;--bs-body-bg:#fff;--bs-body-bg-rgb:255,255,255;--bs-emphasis-color:#000;--bs-emphasis-color-rgb:0,0,0;--bs-secondary-color:rgba(33, 37, 41, 0.75);--bs-secondary-color-rgb:33,37,41;--bs-secondary-bg:#e9ecef;--bs-secondary-bg-rgb:233,236,239;--bs-tertiary-color:rgba(33, 37, 41, 0.5);--bs-tertiary-color-rgb:33,37,41;--bs-tertiary-bg:#f8f9fa;--bs-tertiary-bg-rgb:248,249,250;--bs-heading-color:inherit;--bs-link-color:#0d6efd;--bs-link-color-rgb:13,110,253;--bs-link-decoration:underline;--bs-link-hover-color:#0a58ca;--bs-link-hover-color-rgb:10,88,202;--bs-code-color:#d63384;--bs-highlight-color:#212529;--bs-highlight-bg:#fff3cd;--bs-border-width:1px;--bs-border-style:solid;--bs-border-color:#dee2e6;--bs-border-color-translucent:rgba(0, 0, 0, 0.175);--bs-border-radius:0.375rem;--bs-border-radius-sm:0.25rem;--bs-border-radius-lg:0.5rem;--bs-border-radius-xl:1rem;--bs-border-radius-xxl:2rem;--bs-border-radius-2xl:var(--bs-border-radius-xxl);--bs-border-radius-pill:50rem;--bs-box-shadow:0 0.5rem 1rem rgba(0, 0, 0, 0.15);--bs-box-shadow-sm:0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);--bs-box-shadow-lg:0 1rem 3rem rgba(0, 0, 0, 0.175);--bs-box-shadow-inset:inset 0 1px 2px rgba(0, 0, 0, 0.075);--bs-focus-ring-width:0.25rem;--bs-focus-ring-opacity:0.25;--bs-focus-ring-color:rgba(13, 110, 253, 0.25);--bs-form-valid-color:#198754;--bs-form-valid-border-color:#198754;--bs-form-invalid-color:#dc3545;--bs-form-invalid-border-color:#dc3545;--bs-breakpoint-xs:0;--bs-breakpoint-sm:576px;--bs-breakpoint-md:768px;--bs-breakpoint-lg:992px;--bs-breakpoint-xl:1200px;--bs-breakpoint-xxl:1400px}*,::after,::before{box-sizing:border-box}@media (prefers-reduced-motion:no-preference){:root{scroll-behavior:smooth}}body{margin:0;font-family:var(--bs-body-font-family);font-size:var(--bs-body-font-size);font-weight:var(--bs-body-font-weight);line-height:var(--bs-body-line-height);color:var(--bs-body-color);text-align:var(--bs-body-text-align);background-color:var(--bs-body-bg);-webkit-text-size-adjust:100%;background:#f8f8f8}h1,h2,h3{margin-top:0;margin-bottom:.5rem;font-weight:500;line-height:1.2;color:var(--bs-heading-color)}h1{font-size:calc(1.375rem + 1.5vw)}@media (min-width:1200px){h1{font-size:2.5rem}h2{font-size:2rem}h3{font-size:1.75rem}}p{margin-top:0;margin-bottom:1rem}ol,ul{padding-left:2rem;margin-top:0;margin-bottom:1rem}strong{font-weight:bolder}small{font-size:.875em}a{color:rgba(var(--bs-link-color-rgb),var(--bs-link-opacity,1));color:#353842;text-decoration:none}img,svg{vertical-align:middle}button{border-radius:0;text-transform:none}button,input{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}[type=button],button{-webkit-appearance:button}::-moz-focus-inner{padding:0;border-style:none}::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-fields-wrapper,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-text,::-webkit-datetime-edit-year-field{padding:0}::-webkit-inner-spin-button{height:auto}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-color-swatch-wrapper{padding:0}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}::file-selector-button{font:inherit;-webkit-appearance:button}.list-unstyled{padding-left:0;list-style:none}.img-fluid{max-width:100%;height:auto}.container{--bs-gutter-x:1.5rem;--bs-gutter-y:0;width:100%;padding-right:calc(var(--bs-gutter-x) * .5);padding-left:calc(var(--bs-gutter-x) * .5);margin-right:auto;margin-left:auto}@media (min-width:576px){.container{max-width:540px}}@media (min-width:768px){.container{max-width:720px}}@media (min-width:992px){.container{max-width:960px}}@media (min-width:1200px){.container{max-width:1140px}}@media (min-width:1400px){.container{max-width:1320px}}.row{--bs-gutter-x:1.5rem;--bs-gutter-y:0;display:flex;flex-wrap:wrap;margin-top:calc(-1 * var(--bs-gutter-y));margin-right:calc(-.5 * var(--bs-gutter-x));margin-left:calc(-.5 * var(--bs-gutter-x))}.row>*{flex-shrink:0;width:100%;max-width:100%;padding-right:calc(var(--bs-gutter-x) * .5);padding-left:calc(var(--bs-gutter-x) * .5);margin-top:var(--bs-gutter-y)}.col-12{flex:0 0 auto;width:100%}.form-control{display:block;width:100%;padding:.375rem .75rem;font-size:1rem;font-weight:400;line-height:1.5;color:var(--bs-body-color);-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:var(--bs-body-bg);background-clip:padding-box;border:var(--bs-border-width) solid var(--bs-border-color);border-radius:var(--bs-border-radius)}.form-control::-webkit-date-and-time-value{min-width:85px;height:1.5em;margin:0}.form-control::-webkit-datetime-edit{display:block;padding:0}.form-control::-moz-placeholder{color:var(--bs-secondary-color);opacity:1}.form-control::-webkit-file-upload-button{padding:.375rem .75rem;margin:-.375rem -.75rem;-webkit-margin-end:.75rem;margin-inline-end:.75rem;color:var(--bs-body-color);background-color:var(--bs-tertiary-bg);border:0 solid;border-inline-end-width:var(--bs-border-width);border-radius:0;border-color:inherit}.input-group{position:relative;display:flex;flex-wrap:wrap;align-items:stretch;width:100%}.input-group>.form-control{position:relative;flex:1 1 auto;width:1%;min-width:0}.input-group-text{display:flex;align-items:center;padding:.375rem .75rem;font-size:1rem;font-weight:400;line-height:1.5;color:var(--bs-body-color);text-align:center;white-space:nowrap;background-color:var(--bs-tertiary-bg);border:var(--bs-border-width) solid var(--bs-border-color);border-radius:var(--bs-border-radius)}.input-group:not(.has-validation)>:not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating){border-top-right-radius:0;border-bottom-right-radius:0}.input-group>:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback){margin-left:calc(var(--bs-border-width) * -1);border-top-left-radius:0;border-bottom-left-radius:0}.btn{--bs-btn-padding-x:0.75rem;--bs-btn-padding-y:0.375rem;--bs-btn-font-size:1rem;--bs-btn-font-weight:400;--bs-btn-line-height:1.5;--bs-btn-color:var(--bs-body-color);--bs-btn-bg:transparent;--bs-btn-border-width:var(--bs-border-width);--bs-btn-border-color:transparent;--bs-btn-border-radius:var(--bs-border-radius);--bs-btn-hover-border-color:transparent;--bs-btn-box-shadow:inset 0 1px 0 rgba(255, 255, 255, 0.15),0 1px 1px rgba(0, 0, 0, 0.075);--bs-btn-disabled-opacity:0.65;--bs-btn-focus-box-shadow:0 0 0 0.25rem rgba(var(--bs-btn-focus-shadow-rgb), .5);display:inline-block;padding:var(--bs-btn-padding-y) var(--bs-btn-padding-x);font-family:var(--bs-btn-font-family);font-size:var(--bs-btn-font-size);font-weight:var(--bs-btn-font-weight);line-height:var(--bs-btn-line-height);color:var(--bs-btn-color);text-align:center;text-decoration:none;vertical-align:middle;border:var(--bs-btn-border-width) solid var(--bs-btn-border-color);border-radius:var(--bs-btn-border-radius);background-color:var(--bs-btn-bg)}.btn-link{--bs-btn-font-weight:400;--bs-btn-color:var(--bs-link-color);--bs-btn-bg:transparent;--bs-btn-border-color:transparent;--bs-btn-hover-color:var(--bs-link-hover-color);--bs-btn-hover-border-color:transparent;--bs-btn-active-color:var(--bs-link-hover-color);--bs-btn-active-border-color:transparent;--bs-btn-disabled-color:#6c757d;--bs-btn-disabled-border-color:transparent;--bs-btn-box-shadow:0 0 0 #000;--bs-btn-focus-shadow-rgb:49,132,253;text-decoration:underline}.nav-link{display:block;padding:var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);font-size:var(--bs-nav-link-font-size);font-weight:var(--bs-nav-link-font-weight);color:var(--bs-nav-link-color);text-decoration:none;background:0 0;border:0}.navbar{min-height:50px;--bs-navbar-padding-x:0;--bs-navbar-padding-y:0.5rem;--bs-navbar-color:rgba(var(--bs-emphasis-color-rgb), 0.65);--bs-navbar-hover-color:rgba(var(--bs-emphasis-color-rgb), 0.8);--bs-navbar-disabled-color:rgba(var(--bs-emphasis-color-rgb), 0.3);--bs-navbar-active-color:rgba(var(--bs-emphasis-color-rgb), 1);--bs-navbar-brand-padding-y:0.3125rem;--bs-navbar-brand-margin-end:1rem;--bs-navbar-brand-font-size:1.25rem;--bs-navbar-brand-color:rgba(var(--bs-emphasis-color-rgb), 1);--bs-navbar-brand-hover-color:rgba(var(--bs-emphasis-color-rgb), 1);--bs-navbar-nav-link-padding-x:0.5rem;--bs-navbar-toggler-padding-y:0.25rem;--bs-navbar-toggler-padding-x:0.75rem;--bs-navbar-toggler-font-size:1.25rem;--bs-navbar-toggler-icon-bg:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2833, 37, 41, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");--bs-navbar-toggler-border-color:rgba(var(--bs-emphasis-color-rgb), 0.15);--bs-navbar-toggler-border-radius:var(--bs-border-radius);--bs-navbar-toggler-focus-width:0.25rem;position:relative;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:var(--bs-navbar-padding-y) var(--bs-navbar-padding-x)}.navbar>.container{display:flex;flex-wrap:inherit;align-items:center;justify-content:space-between}.navbar-brand{padding-top:var(--bs-navbar-brand-padding-y);padding-bottom:var(--bs-navbar-brand-padding-y);margin-right:var(--bs-navbar-brand-margin-end);font-size:var(--bs-navbar-brand-font-size);color:var(--bs-navbar-brand-color);text-decoration:none;white-space:nowrap}.navbar-toggler{padding:var(--bs-navbar-toggler-padding-y) var(--bs-navbar-toggler-padding-x);font-size:var(--bs-navbar-toggler-font-size);line-height:1;color:var(--bs-navbar-color);background-color:transparent;border:var(--bs-border-width) solid var(--bs-navbar-toggler-border-color);border-radius:var(--bs-navbar-toggler-border-radius)}.navbar-toggler-icon{display:inline-block;width:1.5em;height:1.5em;vertical-align:middle;background-image:var(--bs-navbar-toggler-icon-bg);background-repeat:no-repeat;background-position:center;background-size:100%}.breadcrumb{--bs-breadcrumb-padding-x:0;--bs-breadcrumb-padding-y:0;--bs-breadcrumb-margin-bottom:1rem;--bs-breadcrumb-divider-color:var(--bs-secondary-color);--bs-breadcrumb-item-padding-x:0.5rem;--bs-breadcrumb-item-active-color:var(--bs-secondary-color);display:flex;flex-wrap:wrap;padding:var(--bs-breadcrumb-padding-y) var(--bs-breadcrumb-padding-x);margin-bottom:var(--bs-breadcrumb-margin-bottom);font-size:var(--bs-breadcrumb-font-size);list-style:none;background-color:var(--bs-breadcrumb-bg);border-radius:var(--bs-breadcrumb-border-radius)}.breadcrumb-item+.breadcrumb-item{padding-left:var(--bs-breadcrumb-item-padding-x)}.breadcrumb-item.active{color:var(--bs-breadcrumb-item-active-color)}.btn-close{--bs-btn-close-color:#000;--bs-btn-close-bg:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e");--bs-btn-close-opacity:0.5;--bs-btn-close-hover-opacity:0.75;--bs-btn-close-focus-shadow:0 0 0 0.25rem rgba(13, 110, 253, 0.25);--bs-btn-close-focus-opacity:1;--bs-btn-close-disabled-opacity:0.25;--bs-btn-close-white-filter:invert(1) grayscale(100%) brightness(200%);box-sizing:content-box;width:1em;height:1em;padding:.25em;color:var(--bs-btn-close-color);background:transparent var(--bs-btn-close-bg) center/1em auto no-repeat;border:0;border-radius:.375rem;opacity:var(--bs-btn-close-opacity);filter:none}.offcanvas{--bs-offcanvas-zindex:1045;--bs-offcanvas-width:400px;--bs-offcanvas-height:30vh;--bs-offcanvas-padding-x:1rem;--bs-offcanvas-padding-y:1rem;--bs-offcanvas-color:var(--bs-body-color);--bs-offcanvas-bg:var(--bs-body-bg);--bs-offcanvas-border-width:var(--bs-border-width);--bs-offcanvas-border-color:var(--bs-border-color-translucent);--bs-offcanvas-box-shadow:var(--bs-box-shadow-sm);--bs-offcanvas-title-line-height:1.5;position:fixed;bottom:0;z-index:var(--bs-offcanvas-zindex);display:flex;flex-direction:column;max-width:100%;color:var(--bs-offcanvas-color);visibility:hidden;background-color:var(--bs-offcanvas-bg);background-clip:padding-box;outline:0}.offcanvas.offcanvas-start{top:0;left:0;width:var(--bs-offcanvas-width);border-right:var(--bs-offcanvas-border-width) solid var(--bs-offcanvas-border-color);transform:translateX(-100%)}.offcanvas-header{display:flex;align-items:center;padding:var(--bs-offcanvas-padding-y) var(--bs-offcanvas-padding-x)}.offcanvas-header .btn-close{padding:calc(var(--bs-offcanvas-padding-y) * .5) calc(var(--bs-offcanvas-padding-x) * .5);margin:calc(-.5 * var(--bs-offcanvas-padding-y)) calc(-.5 * var(--bs-offcanvas-padding-x)) calc(-.5 * var(--bs-offcanvas-padding-y)) auto}.offcanvas-body{flex-grow:1;padding:var(--bs-offcanvas-padding-y) var(--bs-offcanvas-padding-x);overflow-y:auto}.d-flex{display:flex!important}.d-none{display:none!important}.border-0{border:0!important}.border-bottom{border-bottom:var(--bs-border-width) var(--bs-border-style) var(--bs-border-color)!important}.w-100{width:100%!important}.justify-content-between{justify-content:space-between!important}.align-items-center{align-items:center!important}.mt-3{margin-top:1rem!important}.me-2{margin-right:.5rem!important}.me-3{margin-right:1rem!important}.me-auto{margin-right:auto!important}.mb-0{margin-bottom:0!important}.mb-4{margin-bottom:1.5rem!important}.ms-auto{margin-left:auto!important}.p-0{padding:0!important}.py-4{padding-top:1.5rem!important;padding-bottom:1.5rem!important}.text-primary{--bs-text-opacity:1;color:rgba(var(--bs-primary-rgb),var(--bs-text-opacity))!important}.text-muted{--bs-text-opacity:1;color:var(--bs-secondary-color)!important}.bg-white{--bs-bg-opacity:1;background-color:rgba(var(--bs-white-rgb),var(--bs-bg-opacity))!important}@media (min-width:768px){.d-md-flex{display:flex!important}}@font-face{font-family:Dosis;font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/dosis/v32/HhyaU5sn9vOmLzlnC_W6EQ.woff2) format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:Dosis;font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/dosis/v32/HhyaU5sn9vOmLzlmC_W6EQ.woff2) format('woff2');unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Dosis;font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/dosis/v32/HhyaU5sn9vOmLzloC_U.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:Dosis;font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/dosis/v32/HhyaU5sn9vOmLzlnC_W6EQ.woff2) format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:Dosis;font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/dosis/v32/HhyaU5sn9vOmLzlmC_W6EQ.woff2) format('woff2');unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Dosis;font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/dosis/v32/HhyaU5sn9vOmLzloC_U.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}*{margin:0;padding:0;box-sizing:border-box;font-family:Dosis,sans-serif}h2{font-size:1.75rem;font-weight:700}h3{font-size:1.5rem;font-weight:700}.rtl{direction:rtl}.rtl .breadcrumb{display:flex;flex-direction:row-reverse;flex-wrap:wrap;justify-content:flex-end}.content-container p a{color:#009aff;text-decoration:underline}@media screen and (max-width:500px){.container{padding-right:2px;padding-left:2px;width:100%}.row{margin-right:0;margin-left:0}}.full_page_container{background-color:#fff;max-width:1140px;margin:auto}@media (max-width:575.98px){.full_page_container{padding:0 11px}}.navbar-brand{position:absolute;left:50%;transform:translateX(-50%)}.text-custom-blue{color:#0288d2!important}.navbar-toggler-icon{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%230288D2' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")!important}#leftOffcanvas{background-color:#fff;color:#0288d2;width:250px;position:fixed;top:0;left:0;z-index:1040;transform:translateX(-100%)}#leftOffcanvas .offcanvas-header{border-bottom:1px solid rgba(2,136,210,.2);padding:1rem}#leftOffcanvas .offcanvas-body .nav-link{color:#0288d2;padding:10px 15px}#searchBar{display:none}.offcanvas-menu-item{padding:1rem 0;text-align:center}.language-dropdown-btn{border:1px solid #0288d2;border-radius:20px;padding:5px 15px;color:#0288d2;text-decoration:none;display:flex;align-items:center;justify-content:center}.language-dropdown-btn .language-icon-container{border:1px solid #0288d2;border-radius:50%;padding:5px 8px;margin-right:10px}.language-selector-list{list-style:none;padding:0;margin:0}.language-selector-item{padding:1rem;display:flex;align-items:center;text-decoration:none;color:#000}.language-selector-item .lang-code{font-weight:700;width:40px;text-align:center}.language-selector-item.active{background-color:rgba(2,136,210,.2);color:#000;border-radius:10px;margin:0 1rem;padding:1rem}.language-selector-item.active .lang-code{background-color:#fff;color:#0288d2;border:1px solid #0288d2;padding:5px;border-radius:5px;margin-right:1rem}.language-selector-item.active .close-icon{color:#0288d2}#backButton svg,.input-group-text svg,.nav-link svg,.offcanvas-body svg{width:2em;height:2em;fill:currentColor}.app-image{width:100px;height:100px;border-radius:1rem}.new-download-btn{background-color:#3498db;color:#fff;padding:12px 14px;border-radius:0.5rem;display:flex;align-items:center;justify-content:space-between;text-decoration:none;width:100%;max-width:400px;margin-top:1.5rem;box-shadow:0 4px 8px rgba(0,0,0,.1)}.new-download-btn .btn-text{display:flex;flex-direction:column;align-items:flex-start}.new-download-btn .btn-text strong{font-size:1.5rem}.new-download-btn .btn-text small{opacity:.8;font-size:1rem;opacity:1}@media (max-width:767.98px){.new-download-btn{max-width:100%}}.download-svg-icon{width:2.2rem;height:2.2rem;fill:white}.stats-line-container{-webkit-overflow-scrolling:touch;overflow-x:auto;white-space:nowrap;padding-bottom:5px;-webkit-overflow-scrolling:touch;margin-bottom:1.1rem!important}.stats-line{display:inline-flex;align-items:center}.stats-line .stat-item{padding:0 1rem;border-right:1px solid #ccc;font-size:1.1rem;color:#555;flex-shrink:0}.stats-line .stat-item:first-child{padding-left:0}.stats-line .stat-item:last-child{border-right:none}.align-items-center.mb-4{display:flex;flex-direction:row;margin-bottom:1.1rem!important}h2.app-desc-mini{font-size:18px;line-height:1.3;font-weight:600;margin-bottom:24px}.app-img-sc{flex:0 0 auto;width:100px;height:100px;padding:0;margin:0 10px 10px}.app-title-sc{flex:1 0 0%}.screenshots-container{margin-top:1rem}.screenshots-scroll{overflow-x:auto;white-space:nowrap;padding-bottom:1rem;-webkit-overflow-scrolling:touch}.screenshot-item{display:inline-block;margin-right:1rem;border-radius:0.5rem;overflow:hidden;box-shadow:0 4px 8px rgba(0,0,0,.1)}.screenshot-item img{height:200px;width:auto;display:block}.section-title{font-size:1.7rem;font-weight:600}.single-bread{background-color:unset;padding:0;font-size:.7rem}.gl-ad-container{clear: both;margin: 0 auto;text-align: center;}.tad-custom{min-height: 250px !important;text-align: center;}.tad-1{min-height: 250px !important;}.ql-align-center {text-align: center;}.review-page{font-size: 1.3em;}@media screen and (max-width: 575px){.review-page {font-size: 1em;}} 
+</style>	
+    <link media="print" onload="this.media='all'; this.onload=null;" rel="stylesheet" href="https://internet-download-manager.en.softmany.com/frontend/css/bs.min.css" crossorigin="anonymous">
+	 <noscript><link rel="stylesheet" href="https://internet-download-manager.en.softmany.com/frontend/css/bs.min.css"></noscript>
+    <link media="print" onload="this.media='all'; this.onload=null;" rel="stylesheet" href="https://internet-download-manager.en.softmany.com/assets/css/feather.css">
+	  <noscript><link rel="stylesheet" href="https://internet-download-manager.en.softmany.com/assets/css/feather.css"></noscript>
+    <link media="print" onload="this.media='all';" rel="stylesheet" href="https://internet-download-manager.en.softmany.com/frontend/css/styles.css?v=1788241018">
+	<noscript><link rel="stylesheet" href="https://internet-download-manager.en.softmany.com/frontend/css/styles.css?v=1788241018"></noscript>
+	<link rel="icon" href="https://internet-download-manager.en.softmany.com/logos/J8XnqrsiOVx2Cdjckre34l5U3WHcFyMDglnWkNHM.webp">
+   <link rel="preload" href="https://fonts.gstatic.com/s/dosis/v32/HhyaU5sn9vOmLzloC_U.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" as="image" href="https://internet-download-manager.en.softmany.com/frontend/images/logo.svg">
+	
+        
+        <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+    	
+    
+    <link rel="canonical" href="https://internet-download-manager.en.softmany.com/">
+
+	<meta name="og:site_name" content="Softmany.com" />
+    <meta name="og:type" content="article" />
+    <meta name="og:title" content="Internet Download Manager - Download" />
+	<meta name="og:url" content="https://internet-download-manager.en.softmany.com" />
+    <meta name="og:image" content="https://internet-download-manager.en.softmany.com/logos/J8XnqrsiOVx2Cdjckre34l5U3WHcFyMDglnWkNHM.webp" />	
+    <meta name="og:description" content="Internet Download Manager offers the fastest downloading process for audio/video files from the internet." />
+	<meta name="csrf-token" content="FjEqhfXb4Fc8leMCpFSN2XQAmY0BhW2Cmk8jcimZ">
+
+   <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+  
+    <link rel="alternate" hreflang="x-default" href="https://internet-download-manager.en.softmany.com/" />
+    <link rel="alternate" hreflang="es" href="https://internet-download-manager.softmany.com/" />
+    <link rel="alternate" hreflang="fr" href="https://internet-download-manager.fr.softmany.com/" />
+    <link rel="alternate" hreflang="pt" href="https://internet-download-manager.br.softmany.com/" />
+    <link rel="alternate" hreflang="de" href="https://internet-download-manager.de.softmany.com/" />
+    <link rel="alternate" hreflang="it" href="https://internet-download-manager.it.softmany.com/" />
+    <link rel="alternate" hreflang="zh" href="https://internet-download-manager.cn.softmany.com/" />
+    <link rel="alternate" hreflang="ru" href="https://internet-download-manager.ru.softmany.com/" />
+    <link rel="alternate" hreflang="ja" href="https://internet-download-manager.jp.softmany.com/" />
+    <link rel="alternate" hreflang="id" href="https://internet-download-manager.id.softmany.com/" />
+    <link rel="alternate" hreflang="ko" href="https://internet-download-manager.kr.softmany.com/" />
+    <link rel="alternate" hreflang="ar" href="https://internet-download-manager.ar.softmany.com/" />
+    <link rel="alternate" hreflang="th" href="https://internet-download-manager.th.softmany.com/" />
+    <link rel="alternate" hreflang="tr" href="https://internet-download-manager.tr.softmany.com/" />
+    <link rel="alternate" hreflang="pl" href="https://internet-download-manager.pl.softmany.com/" />
+    <link rel="alternate" hreflang="de-CH" href="https://internet-download-manager.ch.softmany.com/" />
+    <link rel="alternate" hreflang="no" href="https://internet-download-manager.no.softmany.com/" />
+    <link rel="alternate" hreflang="sl" href="https://internet-download-manager.sl.softmany.com/" />
+    <link rel="alternate" hreflang="da" href="https://internet-download-manager.da.softmany.com/" />
+    <link rel="alternate" hreflang="sv" href="https://internet-download-manager.sv.softmany.com/" />
+    <link rel="alternate" hreflang="nl" href="https://internet-download-manager.nl.softmany.com/" />
+    <link rel="alternate" hreflang="el" href="https://internet-download-manager.el.softmany.com/" />
+    <link rel="alternate" hreflang="fi" href="https://internet-download-manager.fi.softmany.com/" />
+    <link rel="alternate" hreflang="ro" href="https://internet-download-manager.ro.softmany.com/" />
+    <link rel="alternate" hreflang="en" href="https://internet-download-manager.en.softmany.com/" />
+
+<link media="print" onload="this.media='all'; this.onload=null;" rel="stylesheet" href="https://internet-download-manager.en.softmany.com/frontend/css/lightbox.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async=""></script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Internet Download Manager",
+  "description": "Accelerated Downloading with Internet Download Manager (IDM)",
+  "image": "https://internet-download-manager.en.softmany.com/logos/J8XnqrsiOVx2Cdjckre34l5U3WHcFyMDglnWkNHM.webp",
+  "url": "https://internet-download-manager.en.softmany.com",
+  "applicationCategory": "File Transfer and Networking",
+  "operatingSystem": "Windows",
+  "inLanguage": "en",
+  "softwareVersion": "6.43 Build 15",
+  "dateModified": "2026-10-19",
+    "author": {
+  	"@type": "Organization",
+    "name": "Tonec Inc",
+	"url": "https://www.internetdownloadmanager.com/"
+  },
+  "offers": {
+	"@type": "Offer",
+	"price": "0",
+	"priceCurrency": "USD"
+	},	
+  "aggregateRating": {
+        "@type": "AggregateRating",
+		"worstRating":"1",
+		"bestRating":"5",
+        "ratingValue": "5.0", 
+        "ratingCount": "1"       
+    },
+    "review": {
+        "@type": "http://schema.org/Review",
+        "reviewBody": "IDM or Internet Download Manager offers the fastest downloading process for files and other audio/video material from the internet. You will find a plethora of innovative features to enhance your downloading functionality i.e. batch downloading, auto-recovery for error, dynamic file segmentation, and so on.Moreover, the IDM allows you to avail several additional processes i.e. resume, pause, recover downloads, etc while offering compatibility with the Windows operating system.&amp;nbsp; The downloading process is very simple, as you can paste the link in the search box offered by the downloader, or use a downloader as your browser extension.&amp;nbsp;Customized InterfaceThe neatly organized interface offers a clean layout and large buttons and gives easy access to your required function. Several skins are available on the official IDM site for you to download for your toolbar. You will find three different but main features i.e. Scheduler, Start/Start Queue, and Download ability using URL. All these features help you to complete your downloading process easily.&amp;nbsp;One-Click DownloadingIDM offers a quick and easy downloading process. You need to select the content you want to download, copy the URL, paste it into the search box of IDM, and hit the Download button. The one-click operation will save you from any type of extra settings.Auto-monitoring for AntivirusThe advanced functionality of IDM with 100% security for your system offers a complete secure downloading process. So you can get the downloads free of viruses or Trojans, as the downloader runs a scanner automatically such as AdAware, Avast, Spybot, AVG, Anti-virus, McAfee, Norton Internet Security, Norton 360, SpywareBlaster, CCleaner, etc.&amp;nbsp;&amp;nbsp;Batch DownloadingSave your time and energy while spending it on other important activities. Simply, select the material, schedule its download queues, and let it complete in the background while going to other sites or apps to complete your important tasks reliably.&amp;nbsp;Supported BrowsersThe IDM offers a seamless integration for all popular web browsers including Chrome, Edge, Firefox, IE, Avant browser, MSN, AOL, and so on. Moreover, it is integrated with any other app or extension that is performing any services for the downloading process.Categorized DownloadsThe amazing function of IDM is the creation of categories for downloads. The process is quite effective as it gives quick and easy access to downloads. Moreover, the dynamic segmentation feature makes your installation process error-free while keeping an eye on the connection.Secure Connection&amp;nbsp;The support for HTTPS makes your connection secure and safe. It is also integrated with several authentication protocols including Basic, Negotiate, NTLM, Kerberos, etc. Moreover, the support of Microsoft ISA and FTP proxy servers allows you to use the login name and password for accessing any internet or proxies.&amp;nbsp;&amp;nbsp;IDM Grabber &amp;amp; SpiderThe innovative feature helps the users to set their downloading process according to their requirements. It allows you to download an entire website and the specific parts of a website and use them offline. In addition, the drag &amp;amp; drop feature is also available for ease of extracting your download from any app or folder.&amp;nbsp;Schedule FunctionalityThe scheduling functionality is awesome, you can schedule how much time and days should be used for starting and completing the downloading process. The plus point is that you can use the resume option for broken or interrupted downloads.&amp;nbsp;Speed AccelerationThe intelligent dynamic file segmentation technology offers a 5 times high downloading speed. It requires not any additional or new login connection, but reuses the available connections and accelerates the performance amazingly.&amp;nbsp;Support Socio-sharing PlatformsIt supports multiple socio-sharing platforms including YouTube and allows you to download your favorite videos within seconds. It helps you to download entire channels or playlists without any hesitation.&amp;nbsp;Multilingual SupportSupport for multiple languages allows you to select the language you understand better and run the app quite easily. The supported languages are Albanian, Arabic, Azerbaijan, Bosnian, Bulgarian, Chinese, Croatian, Czech, Danish, Dutch, Farsi, French, German, Greek, Hebrew, Hungarian, Italian, Japanese, Korean, Lithuanian, Macedonian, Norwegian, Polish, Portuguese, Romanian, Russian, Serbian, Slovak, Slovenian, Spanish, Thai, Turkish, and Uzbek languages.System Requirements for IDMOperating System: Windows XP/Vista/7/8/8.1/10Memory (RAM):&amp;nbsp;1 GB of RAM required.Hard Disk Space: 25 MB of free space is required for full installation.Processor:&amp;nbsp;Intel Pentium 4 Dual Core GHz or higher",
+        "author": {
+            "@type": "http://schema.org/Organization",
+            "name": "Softmany.com"
+        }
+    }
+
+}
+</script>
+<script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Windows"
+                            ,"item": "https://en.softmany.com"                        
+                        
+                        
+                    },
+                
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "File Transfer and Networking"
+                            ,"item": "https://kits4beats.cc/windows/category/file-transfer-and-networking"                        
+                        
+                    },
+                
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "Internet Download Manager"
+                        
+                    }
+                
+                
+            ]
+        }
+    </script>
+
+	
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7539618464974342" crossorigin="anonymous"></script>
+	
+
+
+	<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BBVZEG6Q1Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BBVZEG6Q1Z');
+</script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Search bar functionality
+        const searchIcon = document.getElementById('searchIcon');
+        const closeSearch = document.getElementById('closeSearch');
+        const searchBar = document.getElementById('searchBar');
+        const defaultHeaderContent = document.getElementById('defaultHeaderContent');
+
+        searchIcon.addEventListener('click', function(e) {
+            e.preventDefault();
+            defaultHeaderContent.classList.remove('d-flex');
+            defaultHeaderContent.classList.add('d-none');
+            searchBar.classList.remove('d-none');
+            searchBar.classList.add('d-flex');
+        });
+
+        closeSearch.addEventListener('click', function() {
+            searchBar.classList.remove('d-flex');
+            searchBar.classList.add('d-none');
+            defaultHeaderContent.classList.remove('d-none');
+            defaultHeaderContent.classList.add('d-flex');
+        });
+
+        // Offcanvas Language Selector functionality
+        const languageDropdownBtn = document.getElementById('languageDropdownBtn');
+        const backButton = document.getElementById('backButton');
+        const defaultOffcanvasMenu = document.getElementById('defaultOffcanvasMenu');
+        const languageSelector = document.getElementById('languageSelector');
+        const offcanvasHeader = document.getElementById('offcanvasHeader');
+        const closeButton = offcanvasHeader.querySelector('.btn-close');
+
+        languageDropdownBtn.addEventListener('click', function() {
+            defaultOffcanvasMenu.classList.add('d-none');
+            languageSelector.classList.remove('d-none');
+            backButton.style.display = 'block';
+            closeButton.classList.remove('ms-auto');
+        });
+
+        backButton.addEventListener('click', function() {
+            languageSelector.classList.add('d-none');
+            defaultOffcanvasMenu.classList.remove('d-none');
+            backButton.style.display = 'none';
+            closeButton.classList.add('ms-auto');
+        });
+
+    // Offcanvas Toggler functionality
+    const offcanvasToggleBtn = document.querySelector('[data-bs-toggle="offcanvas"]');
+    const leftOffcanvas = document.getElementById('leftOffcanvas');
+
+    if (offcanvasToggleBtn && leftOffcanvas) {
+        offcanvasToggleBtn.addEventListener('click', function() {
+            leftOffcanvas.classList.toggle('show');
+        });
+
+        // Add event listener to the offcanvas close button
+        const offcanvasCloseBtn = document.querySelector('#leftOffcanvas .btn-close');
+        if (offcanvasCloseBtn) {
+            offcanvasCloseBtn.addEventListener('click', function() {
+                leftOffcanvas.classList.remove('show');
+            });
+        }
+    }
+    });
+
+</script>
+
+  </head>
+  <body>
+  <div class="full_page_container">
+    <header>
+    
+    <!-- Main Navigation Bar -->
+    <nav class="navbar navbar-light border-bottom">
+        <div class="container">
+            <!-- Normal Header Content -->
+            <div id="defaultHeaderContent" class="d-flex w-100 align-items-center">
+                <!-- Left Side Toggler (Hamburger Icon) -->
+                <button class="navbar-toggler me-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#leftOffcanvas" aria-controls="leftOffcanvas" aria-label="Open left navigation menu" >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Logo Section (Centered) -->
+                <a class="navbar-brand" href="https://en.softmany.com">
+                    <img fetchpriority="high" src="https://internet-download-manager.en.softmany.com/frontend/images/logo.svg" alt="Logo" width="180" height="40">
+                </a>
+
+                <!-- Right Side Icons -->
+                <div class="d-flex align-items-center ms-auto">
+                                                                        <a class="nav-link text-custom-blue me-3 d-none d-md-flex" href="https://kits4beats.cc/">
+                                <!-- Windows SVG Icon -->
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M96 157.7L279.6 132.4L279.6 309.8L96 309.8L96 157.7zM96 482.3L279.6 507.6L279.6 332.4L96 332.4L96 482.3zM299.8 510.3L544 544L544 332.4L299.8 332.4L299.8 510.3zM299.8 129.7L299.8 309.8L544 309.8L544 96L299.8 129.7z"/></svg>
+                            </a>
+                                                                                                 <a class="nav-link text-custom-blue me-3 d-none d-md-flex" href="https://kits4beats.cc/android">
+                                <!-- Android SVG Icon -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M452.5 317.9C465.8 317.9 476.5 328.6 476.5 341.9C476.5 355.2 465.8 365.9 452.5 365.9C439.2 365.9 428.5 355.2 428.5 341.9C428.5 328.6 439.2 317.9 452.5 317.9zM187.4 317.9C200.7 317.9 211.4 328.6 211.4 341.9C211.4 355.2 200.7 365.9 187.4 365.9C174.1 365.9 163.4 355.2 163.4 341.9C163.4 328.6 174.1 317.9 187.4 317.9zM461.1 221.4L509 138.4C509.8 137.3 510.3 136 510.5 134.6C510.7 133.2 510.7 131.9 510.4 130.5C510.1 129.1 509.5 127.9 508.7 126.8C507.9 125.7 506.9 124.8 505.7 124.1C504.5 123.4 503.2 123 501.8 122.8C500.4 122.6 499.1 122.8 497.8 123.2C496.5 123.6 495.3 124.3 494.2 125.1C493.1 125.9 492.3 127.1 491.7 128.3L443.2 212.4C404.4 195 362.4 186 319.9 186C277.4 186 235.4 195 196.6 212.4L148.2 128.4C147.6 127.2 146.7 126.1 145.7 125.2C144.7 124.3 143.4 123.7 142.1 123.3C140.8 122.9 139.4 122.8 138.1 122.9C136.8 123 135.4 123.5 134.2 124.2C133 124.9 132 125.8 131.2 126.9C130.4 128 129.8 129.3 129.5 130.6C129.2 131.9 129.2 133.3 129.4 134.7C129.6 136.1 130.2 137.3 130.9 138.5L178.8 221.5C96.5 266.2 40.2 349.5 32 448L608 448C599.8 349.5 543.5 266.2 461.1 221.4z"/></svg>
+                            </a>
+                                                                <a class="nav-link text-custom-blue" href="#" id="searchIcon" aria-label="Search">
+                        <!-- Search SVG Icon -->
+                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M480 272C480 317.9 465.1 360.3 440 394.7L566.6 521.4C579.1 533.9 579.1 554.2 566.6 566.7C554.1 579.2 533.8 579.2 521.3 566.7L394.7 440C360.3 465.1 317.9 480 272 480C157.1 480 64 386.9 64 272C64 157.1 157.1 64 272 64C386.9 64 480 157.1 480 272zM272 416C351.5 416 416 351.5 416 272C416 192.5 351.5 128 272 128C192.5 128 128 192.5 128 272C128 351.5 192.5 416 272 416z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Search Bar Overlay -->
+            <div id="searchBar" class="d-flex w-100 d-none">
+                <form class="d-flex w-100 search-container" action=" https://kits4beats.cc/windows/search" method="get">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white text-custom-blue border-0">
+                            <!-- Search SVG Icon -->
+                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M480 272C480 317.9 465.1 360.3 440 394.7L566.6 521.4C579.1 533.9 579.1 554.2 566.6 566.7C554.1 579.2 533.8 579.2 521.3 566.7L394.7 440C360.3 465.1 317.9 480 272 480C157.1 480 64 386.9 64 272C64 157.1 157.1 64 272 64C386.9 64 480 157.1 480 272zM272 416C351.5 416 416 351.5 416 272C416 192.5 351.5 128 272 128C192.5 128 128 192.5 128 272C128 351.5 192.5 416 272 416z"/></svg>
+                        </span>
+                        <input type="text" class="form-control border-0 text-custom-blue" name="q" placeholder="Search apps" aria-label="Search">
+                        <span class="input-group-text bg-white border-0">
+                            <button type="button" class="btn-close" id="closeSearch" aria-label="Close"></button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Offcanvas for the Left Sidebar -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="leftOffcanvas" aria-labelledby="leftOffcanvasLabel">
+    <div class="offcanvas-header d-flex justify-content-between align-items-center" id="offcanvasHeader">
+        <button class="btn btn-link text-custom-blue p-0" id="backButton" style="display:none;">
+            <!-- Back Arrow SVG Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H109.2l105.5-105.5c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        </button>
+        <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <!-- Default Offcanvas Menu -->
+        <div id="defaultOffcanvasMenu">
+            <ul class="list-unstyled">
+                <li class="nav-item offcanvas-menu-item">
+                    <button class="language-dropdown-btn w-100" id="languageDropdownBtn">
+                        <span class="language-icon-container">en</span>
+                        <span>
+                             English
+                                                    </span>
+                    </button>
+                </li>
+                                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center text-custom-blue" href="https://kits4beats.cc/">
+                                                            <!-- Windows SVG Icon -->
+                              
+								 <svg class="me-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M96 157.7L279.6 132.4L279.6 309.8L96 309.8L96 157.7zM96 482.3L279.6 507.6L279.6 332.4L96 332.4L96 482.3zM299.8 510.3L544 544L544 332.4L299.8 332.4L299.8 510.3zM299.8 129.7L299.8 309.8L544 309.8L544 96L299.8 129.7z"/></svg>
+                                                        <span>Windows</span>
+                        </a>
+                    </li>
+                                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center text-custom-blue" href="https://kits4beats.cc/android">
+                                                            <!-- Android SVG Icon -->
+                                <svg class="me-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M452.5 317.9C465.8 317.9 476.5 328.6 476.5 341.9C476.5 355.2 465.8 365.9 452.5 365.9C439.2 365.9 428.5 355.2 428.5 341.9C428.5 328.6 439.2 317.9 452.5 317.9zM187.4 317.9C200.7 317.9 211.4 328.6 211.4 341.9C211.4 355.2 200.7 365.9 187.4 365.9C174.1 365.9 163.4 355.2 163.4 341.9C163.4 328.6 174.1 317.9 187.4 317.9zM461.1 221.4L509 138.4C509.8 137.3 510.3 136 510.5 134.6C510.7 133.2 510.7 131.9 510.4 130.5C510.1 129.1 509.5 127.9 508.7 126.8C507.9 125.7 506.9 124.8 505.7 124.1C504.5 123.4 503.2 123 501.8 122.8C500.4 122.6 499.1 122.8 497.8 123.2C496.5 123.6 495.3 124.3 494.2 125.1C493.1 125.9 492.3 127.1 491.7 128.3L443.2 212.4C404.4 195 362.4 186 319.9 186C277.4 186 235.4 195 196.6 212.4L148.2 128.4C147.6 127.2 146.7 126.1 145.7 125.2C144.7 124.3 143.4 123.7 142.1 123.3C140.8 122.9 139.4 122.8 138.1 122.9C136.8 123 135.4 123.5 134.2 124.2C133 124.9 132 125.8 131.2 126.9C130.4 128 129.8 129.3 129.5 130.6C129.2 131.9 129.2 133.3 129.4 134.7C129.6 136.1 130.2 137.3 130.9 138.5L178.8 221.5C96.5 266.2 40.2 349.5 32 448L608 448C599.8 349.5 543.5 266.2 461.1 221.4z"/></svg>
+	
+                                                        <span>Android</span>
+                        </a>
+                    </li>
+                            </ul>
+        </div>
+
+        <!-- Language Selector View -->
+        <div id="languageSelector" class="d-none">
+            <ul class="language-selector-list">
+                                    <li class="nav-item">
+                        <a class="language-selector-item " href="https://softmany.com">
+                            <span class="lang-code">es</span>
+                            <span>Español</span>
+                                                    </a>
+                    </li>
+                                    <li class="nav-item">
+                        <a class="language-selector-item  active " href="https://en.softmany.com">
+                            <span class="lang-code">en</span>
+                            <span>English</span>
+                                                            <!-- Close Times SVG Icon -->
+                                <svg class="ms-auto close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/></svg>
+                                                    </a>
+                    </li>
+                                    <li class="nav-item">
+                        <a class="language-selector-item " href="https://fr.softmany.com">
+                            <span class="lang-code">fr</span>
+                            <span>Français</span>
+                                                    </a>
+                    </li>
+                                    <li class="nav-item">
+                        <a class="language-selector-item " href="https://br.softmany.com">
+                            <span class="lang-code">br</span>
+                            <span>Português</span>
+                                                    </a>
+                    </li>
+                                    <li class="nav-item">
+                        <a class="language-selector-item " href="https://de.softmany.com">
+                            <span class="lang-code">de</span>
+                            <span>Deutsch</span>
+                                                    </a>
+                    </li>
+                                    <li class="nav-item">
+                        <a class="language-selector-item " href="https://it.softmany.com">
+                            <span class="lang-code">it</span>
+                            <span>Italiano</span>
+                                                    </a>
+                    </li>
+                                    <li class="nav-item">
+                        <a class="language-selector-item " href="https://cn.softmany.com">
+                            <span class="lang-code">cn</span>
+                            <span>中文</span>
+                                                    </a>
+                    </li>
+                                    <li class="nav-item">
+                        <a class="language-selector-item " href="https://ru.softmany.com">
+                            <span class="lang-code">ru</span>
+                            <span>Pусский</span>
+                                                    </a>
+                    </li>
+                                    <li class="nav-item">
+                        <a class="language-selector-item " href="https://jp.softmany.com">
+                            <span class="lang-code">jp</span>
+                            <span>日本語</span>
+                                                    </a>
+                    </li>
+                                    <li class="nav-item">
+                        <a class="language-selector-item " href="https://id.softmany.com">
+                            <span class="lang-code">id</span>
+                            <span>B.Indonesia</span>
+                                                    </a>
+                    </li>
+                                    <li class="nav-item">
+                        <a class="language-selector-item " href="https://kr.softmany.com">
+                            <span class="lang-code">kr</span>
+                            <span>한국어</span>
+                                                    </a>
+                    </li>
+                                    <li class="nav-item">
+                        <a class="language-selector-item " href="https://ar.softmany.com">
+                            <span class="lang-code">ar</span>
+                            <span>العربية</span>
+                                                    </a>
+                    </li>
+                                    <li class="nav-item">
+                        <a class="language-selector-item " href="https://th.softmany.com">
+                            <span class="lang-code">th</span>
+                            <span>ภาษาไทย</span>
+                                                    </a>
+                    </li>
+                                    <li class="nav-item">
+                        <a class="language-selector-item " href="https://tr.softmany.com">
+                            <span class="lang-code">tr</span>
+                            <span>Türkçe</span>
+                                                    </a>
+                    </li>
+                                    <li class="nav-item">
+                        <a class="language-selector-item " href="https://pl.softmany.com">
+                            <span class="lang-code">pl</span>
+                            <span>Polski</span>
+                                                    </a>
+                    </li>
+                                    <li class="nav-item">
+                        <a class="language-selector-item " href="https://ch.softmany.com">
+                            <span class="lang-code">ch</span>
+                            <span>Schweiz</span>
+                                                    </a>
+                    </li>
+                                    <li class="nav-item">
+                        <a class="language-selector-item " href="https://no.softmany.com">
+                            <span class="lang-code">no</span>
+                            <span>Norsk</span>
+                                                    </a>
+                    </li>
+                                    <li class="nav-item">
+                        <a class="language-selector-item " href="https://sl.softmany.com">
+                            <span class="lang-code">sl</span>
+                            <span>Slovenščina</span>
+                                                    </a>
+                    </li>
+                                    <li class="nav-item">
+                        <a class="language-selector-item " href="https://da.softmany.com">
+                            <span class="lang-code">da</span>
+                            <span>Dansk</span>
+                                                    </a>
+                    </li>
+                                    <li class="nav-item">
+                        <a class="language-selector-item " href="https://sv.softmany.com">
+                            <span class="lang-code">sv</span>
+                            <span>Svenska</span>
+                                                    </a>
+                    </li>
+                                    <li class="nav-item">
+                        <a class="language-selector-item " href="https://nl.softmany.com">
+                            <span class="lang-code">nl</span>
+                            <span>Dutch</span>
+                                                    </a>
+                    </li>
+                                    <li class="nav-item">
+                        <a class="language-selector-item " href="https://el.softmany.com">
+                            <span class="lang-code">el</span>
+                            <span>Ελληνικά</span>
+                                                    </a>
+                    </li>
+                                    <li class="nav-item">
+                        <a class="language-selector-item " href="https://fi.softmany.com">
+                            <span class="lang-code">fi</span>
+                            <span>Suomi</span>
+                                                    </a>
+                    </li>
+                                    <li class="nav-item">
+                        <a class="language-selector-item " href="https://ro.softmany.com">
+                            <span class="lang-code">ro</span>
+                            <span>Română</span>
+                                                    </a>
+                    </li>
+                            </ul>
+        </div>
+    </div>
+</div>    <div id="main" class="container">
+        
+
+		<main >
+            <!-- <section> -->
+            <section class="app-section">
+                <div class="container py-4">
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb single-bread">
+						<li class="breadcrumb-item"><a href="https://en.softmany.com">Windows</a></li>
+						<li class="breadcrumb-item"><a href="https://kits4beats.cc/windows/category/file-transfer-and-networking">File Transfer and Networking</a></li>
+						<li class="breadcrumb-item active" aria-current="page">Internet Download Manager</li>
+					</ol>
+				</nav>
+                    
+                    
+                    
+                        <!-- App Details Section -->
+                        <div class="align-items-center mb-4">
+                            <div class="app-img-sc">
+                                <img src="https://internet-download-manager.en.softmany.com/logos/J8XnqrsiOVx2Cdjckre34l5U3WHcFyMDglnWkNHM.webp" width="100" height="100" alt="Internet Download Manager" class="img-fluid app-image">
+
+                            </div>
+                            <div class="app-title-sc">
+                                <h1 class="section-title"><a href="https://internet-download-manager.en.softmany.com">Internet Download Manager</a></h1>
+								                                <p class="text-muted mb-0">6.43 Build 15</p>
+							                                    <p class="text-primary mb-0">Tonec Inc</p>
+                            </div>
+                        </div>
+
+
+
+
+                        <!-- Stats Line Section -->
+                        <div class="stats-line-container mb-4">
+                            <div class="stats-line">
+                                <div class="stat-item">
+								
+															<form id="ratingForm" method="POST" action="https://internet-download-manager.en.softmany.com/rate-content" style="margin: 0;float: left;">
+									<input type="hidden" name="_token" value="FjEqhfXb4Fc8leMCpFSN2XQAmY0BhW2Cmk8jcimZ" autocomplete="off">									<input type="hidden" name="content_id" value="244">
+									<input type="hidden" name="rating" id="ratingValue">
+								</form>
+
+								<span id="stars">
+																			<span class="star" data-value="1" style="cursor: pointer; font-size: 16px; color: #ccc;">★</span>
+																			<span class="star" data-value="2" style="cursor: pointer; font-size: 16px; color: #ccc;">★</span>
+																			<span class="star" data-value="3" style="cursor: pointer; font-size: 16px; color: #ccc;">★</span>
+																			<span class="star" data-value="4" style="cursor: pointer; font-size: 16px; color: #ccc;">★</span>
+																			<span class="star" data-value="5" style="cursor: pointer; font-size: 16px; color: #ccc;">★</span>
+																	</span>
+
+								<span id="rating-text">
+									<span id="avg-rating">5.0</span>
+									(<span id="vote-count">1</span> votes)
+								</span>
+
+															
+								</div>
+								 <div class="stat-item">October 19, 2026</div>
+                                <div class="stat-item">Windows</div>
+                                <div class="stat-item">11.97 MB</div>
+                                <div class="stat-item">Demo</div>
+								<div class="stat-item"><p style="display:flex;align-items:center;gap:6px;color:#16a34a;font-size:14px;font-weight:500;margin:0;">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#16a34a" width="15" height="15" aria-hidden="true">
+    <path fill-rule="evenodd" d="M12 1.5c-.3 0-.6.07-.87.2L4.5 4.68a2.25 2.25 0 0 0-1.25 2.02v5.13c0 6.13 4.6 9.9 8.31 11.47.29.12.6.12.88 0 3.72-1.57 8.31-5.34 8.31-11.47V6.7a2.25 2.25 0 0 0-1.25-2.02L12.87 1.7a1.93 1.93 0 0 0-.87-.2Zm3.03 8.28a.75.75 0 0 0-1.06-1.06l-3.72 3.72-1.22-1.22a.75.75 0 1 0-1.06 1.06l1.75 1.75c.3.3.77.3 1.06 0l4.25-4.25Z" clip-rule="evenodd" />
+  </svg>
+  Safe &amp; Secure
+</p></div>
+                            </div>
+                        </div>
+
+                        <!-- Mini Description -->
+                        <h2 class="app-desc-mini">Accelerated Downloading with Internet Download Manager (IDM)</h2>
+						
+						
+
+    <div class="gl-ad-container">
+<div class="container">
+            <div class="row adv-label" style="color: #747474;text-align: center !important;">
+                <div class="col-12">Advertisement</div>
+            </div>
+        </div>
+<div class="container tad-custom" style="padding: 10px 0;text-align: center;clear: both;">
+<!-- SoftMany_Header_Top_Responsive -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7539618464974342"
+     data-ad-slot="7205661428"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+    </div>
+
+							
+						
+						
+                        						
+                        <a href="https://kits4beats.cc/" class="new-download-btn google-anno-skip" target="_self">
+                            <div class="btn-text google-anno-skip">
+														<strong>Download</strong>
+							<small>for Windows</small>
+							                            </div>
+ <svg class="download-svg-icon google-anno-skip" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M352 96C352 78.3 337.7 64 320 64C302.3 64 288 78.3 288 96L288 306.7L246.6 265.3C234.1 252.8 213.8 252.8 201.3 265.3C188.8 277.8 188.8 298.1 201.3 310.6L297.3 406.6C309.8 419.1 330.1 419.1 342.6 406.6L438.6 310.6C451.1 298.1 451.1 277.8 438.6 265.3C426.1 252.8 405.8 252.8 393.3 265.3L352 306.7L352 96zM160 384C124.7 384 96 412.7 96 448L96 480C96 515.3 124.7 544 160 544L480 544C515.3 544 544 515.3 544 480L544 448C544 412.7 515.3 384 480 384L433.1 384L376.5 440.6C345.3 471.8 294.6 471.8 263.4 440.6L206.9 384L160 384zM464 440C477.3 440 488 450.7 488 464C488 477.3 477.3 488 464 488C450.7 488 440 477.3 440 464C440 450.7 450.7 440 464 440z"/></svg>
+                        </a>
+
+                         <!-- Screenshots Section -->
+						
+                        <div class="screenshots-container google-anno-skip">
+					    <div class="screenshots-scroll">
+														<a class="screenshot-item" href="https://internet-download-manager.en.softmany.com/screenshots/pqQSV6lX689Xc7smMP4ZNiPbCpV1WTCsSMyeHkKf.webp" data-lightbox="Screen Shots">
+								<img 
+									src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+									data-src="https://internet-download-manager.en.softmany.com/screenshots"
+									data-srcset="https://internet-download-manager.en.softmany.com/screenshots 350w, https://internet-download-manager.en.softmany.com/screenshots/pqQSV6lX689Xc7smMP4ZNiPbCpV1WTCsSMyeHkKf.webp 1151w"
+									alt="Software Screen Shots" 
+									width="350" 
+									height="200" 
+									class="lazyload"
+								>
+							</a>
+														<a class="screenshot-item" href="https://internet-download-manager.en.softmany.com/screenshots/1HDFcazj3mb4JE9zYJCTBRhrHXVqhsRUPvhUaVA7.webp" data-lightbox="Screen Shots">
+								<img 
+									src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+									data-src="https://internet-download-manager.en.softmany.com/screenshots"
+									data-srcset="https://internet-download-manager.en.softmany.com/screenshots 350w, https://internet-download-manager.en.softmany.com/screenshots/1HDFcazj3mb4JE9zYJCTBRhrHXVqhsRUPvhUaVA7.webp 1151w"
+									alt="Software Screen Shots" 
+									width="350" 
+									height="200" 
+									class="lazyload"
+								>
+							</a>
+														<a class="screenshot-item" href="https://internet-download-manager.en.softmany.com/screenshots/YdAjIUAefPZwLEuHXiEmoWevZvwnqxTj8RARCSrM.webp" data-lightbox="Screen Shots">
+								<img 
+									src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+									data-src="https://internet-download-manager.en.softmany.com/screenshots"
+									data-srcset="https://internet-download-manager.en.softmany.com/screenshots 350w, https://internet-download-manager.en.softmany.com/screenshots/YdAjIUAefPZwLEuHXiEmoWevZvwnqxTj8RARCSrM.webp 1151w"
+									alt="Software Screen Shots" 
+									width="350" 
+									height="200" 
+									class="lazyload"
+								>
+							</a>
+														<a class="screenshot-item" href="https://internet-download-manager.en.softmany.com/screenshots/y2yLAkGmjuvsMyDaBUbjYGop3hEcuj9d3ADAXhSR.webp" data-lightbox="Screen Shots">
+								<img 
+									src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+									data-src="https://internet-download-manager.en.softmany.com/screenshots"
+									data-srcset="https://internet-download-manager.en.softmany.com/screenshots 350w, https://internet-download-manager.en.softmany.com/screenshots/y2yLAkGmjuvsMyDaBUbjYGop3hEcuj9d3ADAXhSR.webp 1151w"
+									alt="Software Screen Shots" 
+									width="350" 
+									height="200" 
+									class="lazyload"
+								>
+							</a>
+														<a class="screenshot-item" href="https://internet-download-manager.en.softmany.com/screenshots/SnQoAYIqrYckyaxJkJksq0H9IONr9EROcKYvQlXm.webp" data-lightbox="Screen Shots">
+								<img 
+									src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+									data-src="https://internet-download-manager.en.softmany.com/screenshots"
+									data-srcset="https://internet-download-manager.en.softmany.com/screenshots 350w, https://internet-download-manager.en.softmany.com/screenshots/SnQoAYIqrYckyaxJkJksq0H9IONr9EROcKYvQlXm.webp 1151w"
+									alt="Software Screen Shots" 
+									width="350" 
+									height="200" 
+									class="lazyload"
+								>
+							</a>
+														<a class="screenshot-item" href="https://internet-download-manager.en.softmany.com/screenshots/w9YrroG8ebBFrbzOirGdexIj1cMaYjq8XHlLXewN.webp" data-lightbox="Screen Shots">
+								<img 
+									src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+									data-src="https://internet-download-manager.en.softmany.com/screenshots"
+									data-srcset="https://internet-download-manager.en.softmany.com/screenshots 350w, https://internet-download-manager.en.softmany.com/screenshots/w9YrroG8ebBFrbzOirGdexIj1cMaYjq8XHlLXewN.webp 1151w"
+									alt="Software Screen Shots" 
+									width="350" 
+									height="200" 
+									class="lazyload"
+								>
+							</a>
+														<a class="screenshot-item" href="https://internet-download-manager.en.softmany.com/screenshots/5Fh3AUln5p69PYqNGvahv5l2BehTwB7TJX1pzpWk.webp" data-lightbox="Screen Shots">
+								<img 
+									src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+									data-src="https://internet-download-manager.en.softmany.com/screenshots"
+									data-srcset="https://internet-download-manager.en.softmany.com/screenshots 350w, https://internet-download-manager.en.softmany.com/screenshots/5Fh3AUln5p69PYqNGvahv5l2BehTwB7TJX1pzpWk.webp 1151w"
+									alt="Software Screen Shots" 
+									width="350" 
+									height="200" 
+									class="lazyload"
+								>
+							</a>
+													</div>
+                        </div>
+						
+		
+<article>
+                        <!-- Content Section -->
+                        <div class="content-container mt-3 review-page">
+
+
+<p><strong>IDM or Internet Download Manager</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> offers the fastest downloading process for files and other </span><strong>audio/video</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> material from the internet. You will find a plethora of </span><strong>innovative features </strong><span style="background-color: transparent; color: rgb(0, 0, 0);">to enhance your downloading functionality i.e. batch downloading, auto-recovery for error, dynamic file segmentation, and so on.</span></p><p><span style="background-color: transparent; color: rgb(0, 0, 0);">Moreover, the </span><strong>IDM </strong><span style="background-color: transparent; color: rgb(0, 0, 0);">allows you to avail several additional processes i.e. </span><strong>resume, pause, recover</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> </span><strong>downloads</strong><span style="background-color: transparent; color: rgb(0, 0, 0);">, etc while offering compatibility with the </span><strong>Windows operating system</strong><span style="background-color: transparent; color: rgb(0, 0, 0);">.&nbsp; The downloading process is very simple, as you can paste the link in the search box offered by the downloader, or use a downloader as your browser extension.&nbsp;</span></p><p><strong>Customized Interface</strong></p><p><span style="background-color: transparent; color: rgb(0, 0, 0);">The neatly </span><strong>organized interface</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> offers a </span><strong>clean layout</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> and </span><strong>large buttons </strong><span style="background-color: transparent; color: rgb(0, 0, 0);">and gives easy access to your required function. Several </span><strong>skins</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> are available on the </span><strong>official IDM site</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> for you to download for your </span><strong>toolbar</strong><span style="background-color: transparent; color: rgb(0, 0, 0);">. You will find </span><strong>three</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> different but </span><strong>main features</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> i.e. </span><strong>Scheduler, Start/Start Queue</strong><span style="background-color: transparent; color: rgb(0, 0, 0);">, and </span><strong>Download </strong><span style="background-color: transparent; color: rgb(0, 0, 0);">ability using </span><strong>URL.</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> All these features help you to complete your downloading process easily.&nbsp;</span></p><p><strong>One-Click Downloading</strong></p><p><strong>IDM</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> offers a quick and easy downloading process. You need to select the content you want to download, </span><strong>copy the URL, paste</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> it into the search box of </span><strong>IDM</strong><span style="background-color: transparent; color: rgb(0, 0, 0);">, and hit the </span><strong>Download </strong><span style="background-color: transparent; color: rgb(0, 0, 0);">button. The one-click operation will save you from any type of extra settings.</span></p><p><strong>Auto-monitoring for Antivirus</strong></p><p><span style="background-color: transparent; color: rgb(0, 0, 0);">The advanced functionality of </span><strong>IDM</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> with </span><strong>100% security</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> for your system offers a complete secure downloading process. So you can get the downloads free of </span><strong>viruses or Trojans</strong><span style="background-color: transparent; color: rgb(0, 0, 0);">, as the downloader runs a </span><strong>scanner</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> automatically such as </span><strong>AdAware, Avast, Spybot, AVG, Anti-virus, McAfee, Norton Internet</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> </span><strong>Security, Norton 360, SpywareBlaster, CCleaner</strong><span style="background-color: transparent; color: rgb(0, 0, 0);">, etc.&nbsp;</span></p><p><strong>Batch Downloading</strong></p><p><span style="background-color: transparent; color: rgb(0, 0, 0);">Save your time and energy while spending it on other important activities. Simply, select the material, </span><strong>schedule </strong><span style="background-color: transparent; color: rgb(0, 0, 0);">its download queues, and let it complete in the background while going to other sites or apps to complete your important tasks reliably.&nbsp;</span></p><p><strong>Supported Browsers</strong></p><p><span style="background-color: transparent; color: rgb(0, 0, 0);">The </span><strong>IDM </strong><span style="background-color: transparent; color: rgb(0, 0, 0);">offers a </span><strong>seamless integration</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> for all popular web browsers including </span><strong>Chrome, Edge, Firefox, IE,</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> </span><strong>Avant browser, MSN, AOL</strong><span style="background-color: transparent; color: rgb(0, 0, 0);">, and so on. Moreover, it is integrated with any other app or extension that is performing any services for the downloading process.</span></p><p><strong>Categorized Downloads</strong></p><p><span style="background-color: transparent; color: rgb(0, 0, 0);">The amazing function of </span><strong>IDM </strong><span style="background-color: transparent; color: rgb(0, 0, 0);">is the creation of </span><strong>categories</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> for downloads. The process is quite effective as it gives quick and easy access to downloads. Moreover, the </span><strong>dynamic segmentation</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> feature makes your installation process error-free while keeping an eye on the connection.</span></p><p><strong>Secure Connection</strong></p><p><span style="background-color: transparent; color: rgb(0, 0, 0);">The support for </span><strong>HTTPS </strong><span style="background-color: transparent; color: rgb(0, 0, 0);">makes your connection secure and safe. It is also integrated with several </span><strong>authentication protocols</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> including </span><strong>Basic, Negotiate, NTLM, Kerberos</strong><span style="background-color: transparent; color: rgb(0, 0, 0);">, etc. Moreover, the support of </span><strong>Microsoft ISA</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> and </span><strong>FTP proxy</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> servers allows you to use the login name and password for accessing any internet or proxies.&nbsp;</span></p><p><strong>IDM Grabber &amp; Spider</strong></p><p><span style="background-color: transparent; color: rgb(0, 0, 0);">The innovative feature helps the users to set their downloading process according to their requirements. It allows you to download an </span><strong>entire website</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> and the </span><strong>specific parts</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> of a website and use them </span><strong>offline</strong><span style="background-color: transparent; color: rgb(0, 0, 0);">. In addition, the </span><strong>drag &amp; drop</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> feature is also available for ease of extracting your download from any app or folder.&nbsp;</span></p><p><strong>Schedule Functionality</strong></p><p><span style="background-color: transparent; color: rgb(0, 0, 0);">The </span><strong>scheduling</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> functionality is awesome, you can schedule how much </span><strong>time and days</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> should be used for starting and completing the </span><strong>downloading proc</strong><span style="background-color: transparent; color: rgb(0, 0, 0);">ess. The plus point is that you can use the </span><strong>resume option</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> for broken or interrupted downloads.&nbsp;</span></p><p><strong>Speed Acceleration</strong></p><p><span style="background-color: transparent; color: rgb(0, 0, 0);">The </span><strong>intelligent dynamic file segmentation technology</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> offers a </span><strong>5 times</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> high downloading speed. It requires not any </span><strong>additional or new login connection</strong><span style="background-color: transparent; color: rgb(0, 0, 0);">, but reuses the available connections and accelerates the performance amazingly.&nbsp;</span></p><p><strong>Support Socio-sharing Platforms</strong></p><p><span style="background-color: transparent; color: rgb(0, 0, 0);">It supports </span><strong>multiple socio-sharing</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> platforms including </span><strong>YouTube</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> and allows you to download your favorite videos within seconds. It helps you to download entire </span><strong>channels or playlists</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> without any hesitation.&nbsp;</span></p><p><strong>Multilingual Support</strong></p><p><span style="background-color: transparent; color: rgb(0, 0, 0);">Support for </span><strong>multiple languages</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> allows you to select the language you understand better and run the app quite easily. The </span><strong>supported languages</strong><span style="background-color: transparent; color: rgb(0, 0, 0);"> are Albanian, Arabic, Azerbaijan, Bosnian, Bulgarian, Chinese, Croatian, Czech, Danish, Dutch, Farsi, French, German, Greek, Hebrew, Hungarian, Italian, Japanese, Korean, Lithuanian, Macedonian, Norwegian, Polish, Portuguese, Romanian, Russian, Serbian, Slovak, Slovenian, Spanish, Thai, Turkish, and Uzbek languages.</span></p><p><strong>System Requirements for IDM</strong></p><p><strong>Operating System</strong><strong>: </strong><span style="background-color: transparent; color: rgb(0, 0, 0);">Windows XP/Vista/7/8/8.1/10</span></p><p><strong>Memory (RAM):</strong><span style="background-color: transparent; color: rgb(0, 0, 0);">&nbsp;1 GB of RAM required.</span></p><p><strong>Hard Disk Space</strong><span style="background-color: transparent; color: rgb(0, 0, 0);">: 25 MB of free space is required for full installation.</span></p><p><strong>Processor:</strong><span style="background-color: transparent; color: rgb(0, 0, 0);">&nbsp;Intel Pentium 4 Dual Core GHz or higher</span></p>
+                        </div>
